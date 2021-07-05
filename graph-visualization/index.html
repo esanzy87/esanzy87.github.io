@@ -15,13 +15,14 @@
           cols="120"
           style="width: 100%"
           id="input--graph-data"
-        >{{ graphData }}</textarea>
+        >{"nodes": [], "categories": [], "edges": []}</textarea>
         <input
           type="hidden"
           name="graphData"
           id="input--graph-data-hidden"
         />
         <button id="btn--render">Render</button>
+        <button id="btn--sample">Sample</button>
       </form>
     </div>
     <script type="text/javascript">
@@ -100,11 +101,22 @@
         var $inputGraphData = $('#input--graph-data');
         var $inputGraphDataHidden = $('#input--graph-data-hidden');
         var $btnRender = $('#btn--render');
+        var $btnSample = $('#btn--sample');
 
         $btnRender.click(function (e) {
           e.preventDefault();
           var graphData = JSON.parse($inputGraphData.val());
           updateChartOption(graphData);
+        });
+
+        $btnSample.click(function (e) {
+          e.preventDefault();
+          fetch("/graph-visualization/sample_data.json")
+            .then(function (response) {
+              var graphData = response.json();
+              updateChartOption(graphData);
+              $inputGraphData.val(JSON.stringify(graphData));
+            });
         });
 
         $(document).ready(function () {
