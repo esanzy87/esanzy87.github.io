@@ -113,14 +113,16 @@
           e.preventDefault();
           fetch("/graph-visualization/sample_data.json")
             .then(function (response) {
-              var graphData = response.json();
+              return response.json();
+            })
+            .then(function (graphData) {
               updateChartOption(graphData);
               $inputGraphData.val(JSON.stringify(graphData));
             });
         });
 
         $(document).ready(function () {
-          var graphData = JSON.parse(`{{ graphData }}`);
+          var graphData = JSON.parse($inputGraphData.val());
           updateChartOption(graphData);
         });
       }) (_.noConflict());
