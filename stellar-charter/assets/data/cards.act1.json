@@ -1,0 +1,1322 @@
+{
+  "version": "act1-draft-0.1",
+  "schemaVersion": 1,
+  "source": "docs/card-draft-v2.md",
+  "resources": [
+    "credits",
+    "minerals",
+    "energy",
+    "data",
+    "fleetPower"
+  ],
+  "resourceAbbreviations": {
+    "credits": "C",
+    "minerals": "M",
+    "energy": "E",
+    "data": "D",
+    "fleetPower": "F"
+  },
+  "types": [
+    "군사",
+    "상업",
+    "첩보"
+  ],
+  "roles": [
+    "생산",
+    "조달",
+    "할인",
+    "경합",
+    "정보",
+    "교란",
+    "인수",
+    "고영향력 바닐라"
+  ],
+  "sets": {
+    "starter": [
+      "START-001",
+      "START-002",
+      "START-003"
+    ],
+    "act1_market": [
+      "MIL-A1",
+      "MIL-A2",
+      "MIL-A3",
+      "MIL-A4",
+      "MIL-A5",
+      "MIL-A6",
+      "MIL-A7",
+      "MIL-A8",
+      "COM-A1",
+      "COM-A2",
+      "COM-A3",
+      "COM-A4",
+      "COM-A5",
+      "COM-A6",
+      "COM-A7",
+      "COM-A8",
+      "ESP-A1",
+      "ESP-A2",
+      "ESP-A3",
+      "ESP-A4",
+      "ESP-A5",
+      "ESP-A6",
+      "ESP-A7",
+      "ESP-A8"
+    ],
+    "atlas_base": [
+      "ATLAS-001",
+      "ATLAS-002",
+      "ATLAS-003",
+      "ATLAS-004",
+      "ATLAS-005",
+      "ATLAS-006"
+    ],
+    "proxy_relic": [
+      "RELIC-001",
+      "RELIC-002",
+      "RELIC-003"
+    ]
+  },
+  "startingResources": {
+    "credits": 1,
+    "minerals": 1,
+    "energy": 1,
+    "data": 1,
+    "fleetPower": 1
+  },
+  "cards": [
+    {
+      "id": "START-001",
+      "name": "소형 원자로",
+      "set": "starter",
+      "description": "선체에 얹을 수 있는 낡은 보조 원자로. 매 성계 진입 때 기본 에너지 여유를 만든다.",
+      "type": "군사",
+      "role": "생산",
+      "influence": 1,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 E+1.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": false,
+          "gain": {
+            "energy": 1
+          }
+        }
+      ],
+      "tags": [
+        "시설/거점"
+      ],
+      "pools": [
+        "starter"
+      ]
+    },
+    {
+      "id": "START-002",
+      "name": "길드 위임장",
+      "set": "starter",
+      "description": "은하 길드의 비공개 위임 문서. 현지 중개권과 장부 접근을 열어 매 성계마다 소액 크레딧을 당겨온다.",
+      "type": "첩보",
+      "role": "생산",
+      "influence": 1,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 C+1.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": false,
+          "gain": {
+            "credits": 1
+          }
+        }
+      ],
+      "tags": [
+        "계약/권리"
+      ],
+      "pools": [
+        "starter"
+      ]
+    },
+    {
+      "id": "START-003",
+      "name": "소행성 채굴권",
+      "set": "starter",
+      "description": "작은 소행성대의 채굴 우선권. 현장 에너지를 투입해야 광물 산출로 이어진다.",
+      "type": "상업",
+      "role": "생산",
+      "influence": 1,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 선택으로 E1을 지불하고 M+1.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": true,
+          "pay": {
+            "energy": 1
+          },
+          "gain": {
+            "minerals": 1
+          }
+        }
+      ],
+      "tags": [
+        "계약/권리"
+      ],
+      "pools": [
+        "starter"
+      ]
+    },
+    {
+      "id": "MIL-A1",
+      "name": "용병 초계장",
+      "set": "act1_market",
+      "description": "크레딧을 계속 요구하는 변방 용병 지휘관. 돈을 태우는 만큼 즉석 호위 전력을 세운다.",
+      "type": "군사",
+      "role": "생산",
+      "influence": 1,
+      "cost": {
+        "credits": 1,
+        "minerals": 0,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 C1을 지불하고 F+1.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": true,
+          "pay": {
+            "credits": 1
+          },
+          "gain": {
+            "fleetPower": 1
+          }
+        }
+      ],
+      "tags": [
+        "인물"
+      ],
+      "pools": [
+        "act1",
+        "general"
+      ]
+    },
+    {
+      "id": "MIL-A2",
+      "name": "소형 조립 도크",
+      "set": "act1_market",
+      "description": "광물과 에너지를 부품으로 바꿔 호위정을 찍어내는 임시 조립 도크.",
+      "type": "군사",
+      "role": "생산",
+      "influence": 2,
+      "cost": {
+        "credits": 0,
+        "minerals": 2,
+        "energy": 1,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 M1과 E1을 지불하고 F+2.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": true,
+          "pay": {
+            "minerals": 1,
+            "energy": 1
+          },
+          "gain": {
+            "fleetPower": 2
+          }
+        }
+      ],
+      "tags": [
+        "시설/거점"
+      ],
+      "pools": [
+        "act1",
+        "general",
+        "risk"
+      ]
+    },
+    {
+      "id": "MIL-A3",
+      "name": "전초 보급장교",
+      "set": "act1_market",
+      "description": "낡은 보급 명단과 창고 열쇠를 쥔 장교. 일반 성계 조달 때 광물 흐름을 한 번 더 끌어낸다.",
+      "type": "군사",
+      "role": "조달",
+      "influence": 1,
+      "cost": {
+        "credits": 0,
+        "minerals": 1,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "조달: 일반 성계에서 조달 또는 우대거래를 선택하면 M+1.",
+      "effects": [
+        {
+          "keyword": "조달",
+          "trigger": "normal_system_resource_action",
+          "appliesToActions": [
+            "procure",
+            "preferred_trade"
+          ],
+          "gain": {
+            "minerals": 1
+          }
+        }
+      ],
+      "tags": [
+        "인물"
+      ],
+      "pools": [
+        "act1",
+        "general"
+      ]
+    },
+    {
+      "id": "MIL-A4",
+      "name": "전술 보급선",
+      "set": "act1_market",
+      "description": "군수품을 싣고 따라붙는 보급선. 군사 자산을 들일 때 필요한 함대전력 부담을 낮춘다.",
+      "type": "군사",
+      "role": "할인",
+      "influence": 2,
+      "cost": {
+        "credits": 1,
+        "minerals": 0,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 1
+      },
+      "text": "할인: 군사 카드 구매 비용 F-1.",
+      "effects": [
+        {
+          "keyword": "할인",
+          "trigger": "card_purchase",
+          "scope": {
+            "type": "군사"
+          },
+          "discount": {
+            "fleetPower": 1
+          }
+        }
+      ],
+      "tags": [
+        "함선/부대"
+      ],
+      "pools": [
+        "act1",
+        "general"
+      ]
+    },
+    {
+      "id": "MIL-A5",
+      "name": "호위 편대장",
+      "set": "act1_market",
+      "description": "호위 전력과 예비 보급품을 묶어 후퇴로를 보장하는 편대장. 군사 경합에서 패배해도 소모한 F 일부를 회수한다.",
+      "type": "군사",
+      "role": "경합",
+      "influence": 2,
+      "cost": {
+        "credits": 0,
+        "minerals": 1,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 2
+      },
+      "text": "경합: 군사 경합에서 패배하면 노드당 1회 소모한 F1을 회수.",
+      "effects": [
+        {
+          "keyword": "경합",
+          "trigger": "contest_resolution",
+          "contestType": "군사",
+          "when": "loss",
+          "limitPerNode": 1,
+          "refundSpent": {
+            "fleetPower": 1
+          }
+        }
+      ],
+      "tags": [
+        "인물"
+      ],
+      "pools": [
+        "act1",
+        "general",
+        "rival"
+      ]
+    },
+    {
+      "id": "MIL-A6",
+      "name": "강행 돌파대",
+      "set": "act1_market",
+      "description": "엔진을 과열시켜 적 봉쇄선을 뚫는 돌격 편대. 실제 F를 더 쓰지 않고 입찰 압박을 키운다.",
+      "type": "군사",
+      "role": "경합",
+      "influence": 2,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 1,
+        "data": 0,
+        "fleetPower": 2
+      },
+      "text": "경합: 군사 경합에서 내 입찰값을 +1로 판정. 실제 F를 추가 소비하지 않는다.",
+      "effects": [
+        {
+          "keyword": "경합",
+          "trigger": "contest_value",
+          "contestType": "군사",
+          "modifyComparison": 1,
+          "extraCost": false
+        }
+      ],
+      "tags": [
+        "함선/부대"
+      ],
+      "pools": [
+        "act1",
+        "risk"
+      ]
+    },
+    {
+      "id": "MIL-A7",
+      "name": "방패 순양함",
+      "set": "act1_market",
+      "description": "방어막과 기동로 계산에 특화된 순양함. 보스전에서 다른 군사 카드 하나의 상성 패배를 막아준다.",
+      "type": "군사",
+      "role": "교란",
+      "influence": 2,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 2,
+        "data": 0,
+        "fleetPower": 2
+      },
+      "text": "교란: 보스전 중 1회, 다른 내 군사 카드의 상성 패배를 무승부로 변경.",
+      "effects": [
+        {
+          "keyword": "교란",
+          "trigger": "boss_dispute_result",
+          "uses": 1,
+          "condition": {
+            "ownSubmittedCardType": "군사",
+            "excludeSelf": true,
+            "lossReason": "type_advantage"
+          },
+          "resultOverride": "draw"
+        }
+      ],
+      "tags": [
+        "함선/부대"
+      ],
+      "pools": [
+        "act1",
+        "risk"
+      ]
+    },
+    {
+      "id": "MIL-A8",
+      "name": "중순양함 편대",
+      "set": "act1_market",
+      "description": "광물과 함대전력을 크게 요구하는 정규 전투 편대. 별다른 재주는 없지만 존재감만으로 분쟁 판을 흔든다.",
+      "type": "군사",
+      "role": "고영향력 바닐라",
+      "influence": 3,
+      "cost": {
+        "credits": 0,
+        "minerals": 2,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 3
+      },
+      "text": "효과 없음.",
+      "effects": [],
+      "tags": [
+        "함선/부대"
+      ],
+      "pools": [
+        "act1",
+        "risk"
+      ]
+    },
+    {
+      "id": "COM-A1",
+      "name": "소형 교역소",
+      "set": "act1_market",
+      "description": "항로 변두리에 박아둔 작은 거래소. 성계에 들어갈 때마다 잔돈과 거래 기회를 만든다.",
+      "type": "상업",
+      "role": "생산",
+      "influence": 1,
+      "cost": {
+        "credits": 1,
+        "minerals": 0,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 C+1.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": false,
+          "gain": {
+            "credits": 1
+          }
+        }
+      ],
+      "tags": [
+        "시설/거점"
+      ],
+      "pools": [
+        "act1",
+        "general",
+        "rival"
+      ]
+    },
+    {
+      "id": "COM-A2",
+      "name": "헬륨 공급계약",
+      "set": "act1_market",
+      "description": "현지 가스 채굴업자와 묶은 장기 계약. 크레딧과 광물을 선납해 안정적인 에너지 공급을 얻는다.",
+      "type": "상업",
+      "role": "생산",
+      "influence": 2,
+      "cost": {
+        "credits": 2,
+        "minerals": 1,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 E+1.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": false,
+          "gain": {
+            "energy": 1
+          }
+        }
+      ],
+      "tags": [
+        "계약/권리"
+      ],
+      "pools": [
+        "act1",
+        "general"
+      ]
+    },
+    {
+      "id": "COM-A3",
+      "name": "현지 조달망",
+      "set": "act1_market",
+      "description": "상인, 창고지기, 운송업자를 묶은 느슨한 네트워크. 우대거래에서 표시 자원을 더 끌어온다.",
+      "type": "상업",
+      "role": "조달",
+      "influence": 2,
+      "cost": {
+        "credits": 2,
+        "minerals": 0,
+        "energy": 0,
+        "data": 1,
+        "fleetPower": 0
+      },
+      "text": "조달: 일반 성계에서 우대거래를 선택하면 표시 자원 +1.",
+      "effects": [
+        {
+          "keyword": "조달",
+          "trigger": "normal_system_resource_action",
+          "appliesToActions": [
+            "preferred_trade"
+          ],
+          "gainDisplayedResource": 1
+        }
+      ],
+      "tags": [
+        "조직/네트워크"
+      ],
+      "pools": [
+        "act1",
+        "general"
+      ]
+    },
+    {
+      "id": "COM-A4",
+      "name": "상업 브로커",
+      "set": "act1_market",
+      "description": "데이터와 수수료를 요구하는 노련한 중개인. 상업 자산을 들일 때 협상 비용을 깎아준다.",
+      "type": "상업",
+      "role": "할인",
+      "influence": 1,
+      "cost": {
+        "credits": 1,
+        "minerals": 0,
+        "energy": 0,
+        "data": 1,
+        "fleetPower": 0
+      },
+      "text": "할인: 상업 카드 구매 비용 C-1.",
+      "effects": [
+        {
+          "keyword": "할인",
+          "trigger": "card_purchase",
+          "scope": {
+            "type": "상업"
+          },
+          "discount": {
+            "credits": 1
+          }
+        }
+      ],
+      "tags": [
+        "인물"
+      ],
+      "pools": [
+        "act1",
+        "general"
+      ]
+    },
+    {
+      "id": "COM-A5",
+      "name": "광역 물류 허브",
+      "set": "act1_market",
+      "description": "위험 항로의 창고와 운송 슬롯을 선점한 대형 물류 거점. 유물 성계에서 부족해지기 쉬운 D나 E 부담을 낮춘다.",
+      "type": "상업",
+      "role": "할인",
+      "influence": 2,
+      "cost": {
+        "credits": 2,
+        "minerals": 1,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "할인: 유물 성계에서 카드 구매 시 D-1 또는 E-1 중 하나를 선택해 적용.",
+      "effects": [
+        {
+          "keyword": "할인",
+          "trigger": "card_purchase",
+          "scope": {
+            "nodeType": "relic"
+          },
+          "chooseOneDiscount": [
+            {
+              "data": 1
+            },
+            {
+              "energy": 1
+            }
+          ]
+        }
+      ],
+      "tags": [
+        "시설/거점"
+      ],
+      "pools": [
+        "act1",
+        "risk"
+      ]
+    },
+    {
+      "id": "COM-A6",
+      "name": "우선 협상권",
+      "set": "act1_market",
+      "description": "아틀라스보다 먼저 협상 테이블에 앉을 권리. 경쟁사 성계의 상업 경합 입찰 부담을 줄인다.",
+      "type": "상업",
+      "role": "경합",
+      "influence": 2,
+      "cost": {
+        "credits": 2,
+        "minerals": 0,
+        "energy": 0,
+        "data": 1,
+        "fleetPower": 0
+      },
+      "text": "경합: 1막 아틀라스 상업 경합 비용을 C2에서 C1로 낮춘다.",
+      "effects": [
+        {
+          "keyword": "경합",
+          "trigger": "atlas_commercial_contest_cost",
+          "setCost": {
+            "credits": 1
+          },
+          "doesNotApplyToAcquisitionContest": true
+        }
+      ],
+      "tags": [
+        "계약/권리"
+      ],
+      "pools": [
+        "act1",
+        "general",
+        "rival"
+      ]
+    },
+    {
+      "id": "COM-A7",
+      "name": "차터 회계감사관",
+      "set": "act1_market",
+      "description": "장부와 데이터로 판권의 정당성을 증명하는 감사관. 상업 카드가 분쟁에 나설 때 영향력을 보강한다.",
+      "type": "상업",
+      "role": "교란",
+      "influence": 2,
+      "cost": {
+        "credits": 2,
+        "minerals": 0,
+        "energy": 0,
+        "data": 2,
+        "fleetPower": 0
+      },
+      "text": "교란: 판권 분쟁에서 내 상업 카드 영향력 +1.",
+      "effects": [
+        {
+          "keyword": "교란",
+          "trigger": "dispute_influence",
+          "scope": {
+            "type": "상업"
+          },
+          "modifyComparison": 1
+        }
+      ],
+      "tags": [
+        "인물"
+      ],
+      "pools": [
+        "act1",
+        "general",
+        "risk"
+      ]
+    },
+    {
+      "id": "COM-A8",
+      "name": "독점 운송 판권",
+      "set": "act1_market",
+      "description": "크레딧과 운항 에너지로 항로 하나를 사실상 묶어두는 독점 판권. 별도 효과는 없지만 높은 상업 영향력 자체가 보상이다.",
+      "type": "상업",
+      "role": "고영향력 바닐라",
+      "influence": 3,
+      "cost": {
+        "credits": 3,
+        "minerals": 0,
+        "energy": 1,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "효과 없음.",
+      "effects": [],
+      "tags": [
+        "계약/권리"
+      ],
+      "pools": [
+        "act1",
+        "rival",
+        "risk"
+      ]
+    },
+    {
+      "id": "ESP-A1",
+      "name": "데이터 브로커",
+      "set": "act1_market",
+      "description": "거래 가능한 소문과 항로 로그를 모으는 정보상. 성계 진입마다 데이터 흐름을 만든다.",
+      "type": "첩보",
+      "role": "생산",
+      "influence": 1,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 0,
+        "data": 1,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 D+1.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": false,
+          "gain": {
+            "data": 1
+          }
+        }
+      ],
+      "tags": [
+        "인물"
+      ],
+      "pools": [
+        "act1",
+        "general"
+      ]
+    },
+    {
+      "id": "ESP-A2",
+      "name": "암호 조달표",
+      "set": "act1_market",
+      "description": "암호화된 공급 명단과 가격표. 일반 성계 조달 때 데이터 기반 추가 이득을 만든다.",
+      "type": "첩보",
+      "role": "조달",
+      "influence": 2,
+      "cost": {
+        "credits": 1,
+        "minerals": 0,
+        "energy": 0,
+        "data": 2,
+        "fleetPower": 0
+      },
+      "text": "조달: 일반 성계에서 조달 또는 우대거래를 선택하면 D+1.",
+      "effects": [
+        {
+          "keyword": "조달",
+          "trigger": "normal_system_resource_action",
+          "appliesToActions": [
+            "procure",
+            "preferred_trade"
+          ],
+          "gain": {
+            "data": 1
+          }
+        }
+      ],
+      "tags": [
+        "정보/문서"
+      ],
+      "pools": [
+        "act1",
+        "general"
+      ]
+    },
+    {
+      "id": "ESP-A3",
+      "name": "전초 관측망",
+      "set": "act1_market",
+      "description": "에너지와 데이터를 먹는 감시망. 다음 노드 공개 카드 일부를 먼저 확인한다.",
+      "type": "첩보",
+      "role": "정보",
+      "influence": 1,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 1,
+        "data": 1,
+        "fleetPower": 0
+      },
+      "text": "정보: 이 카드를 획득하면 다음 노드 공개 카드 1장을 미리 본다.",
+      "effects": [
+        {
+          "keyword": "정보",
+          "trigger": "on_acquire",
+          "previewNextNodeCards": 1
+        }
+      ],
+      "tags": [
+        "조직/네트워크"
+      ],
+      "pools": [
+        "act1",
+        "general"
+      ]
+    },
+    {
+      "id": "ESP-A4",
+      "name": "내부고발 요원",
+      "set": "act1_market",
+      "description": "아틀라스 내부 파일에 접근한 제보자. 보스전에서 상대가 낼 후보를 좁혀준다.",
+      "type": "첩보",
+      "role": "정보",
+      "influence": 2,
+      "cost": {
+        "credits": 1,
+        "minerals": 0,
+        "energy": 0,
+        "data": 2,
+        "fleetPower": 0
+      },
+      "text": "정보: 보스전 판권 분쟁 1회, 후보 2장 압축.",
+      "effects": [
+        {
+          "keyword": "정보",
+          "trigger": "boss_dispute_before_submission",
+          "uses": 1,
+          "compressOpponentCandidatesTo": 2
+        }
+      ],
+      "tags": [
+        "인물"
+      ],
+      "pools": [
+        "act1",
+        "risk"
+      ]
+    },
+    {
+      "id": "ESP-A5",
+      "name": "암호 입찰망",
+      "set": "act1_market",
+      "description": "암호 장비와 대리 입찰자를 묶은 익명 첩보망. 첩보 경합의 D 비교값을 부풀리지만 실패하면 노출된 데이터가 한꺼번에 탄다.",
+      "type": "첩보",
+      "role": "경합",
+      "influence": 2,
+      "cost": {
+        "credits": 0,
+        "minerals": 1,
+        "energy": 0,
+        "data": 1,
+        "fleetPower": 0
+      },
+      "text": "경합: 첩보 경합에서 내 D 비교값을 +1로 판정. 패배하면 보유 D를 모두 잃는다.",
+      "effects": [
+        {
+          "keyword": "경합",
+          "trigger": "contest_value",
+          "contestType": "첩보",
+          "modifyComparison": 1,
+          "onLoss": "lose_all_data"
+        }
+      ],
+      "tags": [
+        "조직/네트워크"
+      ],
+      "pools": [
+        "act1",
+        "general",
+        "rival"
+      ]
+    },
+    {
+      "id": "ESP-A6",
+      "name": "역상성 프로토콜",
+      "set": "act1_market",
+      "description": "상성상 불리한 교전을 무승부로 끌고 가는 교전 절차. 에너지와 데이터로 검증된 절차다.",
+      "type": "첩보",
+      "role": "교란",
+      "influence": 2,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 1,
+        "data": 2,
+        "fleetPower": 0
+      },
+      "text": "교란: 보스전 중 1회, 내 카드가 상성으로 패배할 때 그 패배를 무승부로 변경.",
+      "effects": [
+        {
+          "keyword": "교란",
+          "trigger": "boss_dispute_result",
+          "uses": 1,
+          "condition": {
+            "lossReason": "type_advantage"
+          },
+          "resultOverride": "draw"
+        }
+      ],
+      "tags": [
+        "정보/문서"
+      ],
+      "pools": [
+        "act1",
+        "risk"
+      ]
+    },
+    {
+      "id": "ESP-A7",
+      "name": "그림자 보험망",
+      "set": "act1_market",
+      "description": "패배 리스크를 사전에 분산하는 비공식 보험망. 보스 후보 압축과 패배 무효화를 함께 제공한다.",
+      "type": "첩보",
+      "role": "교란",
+      "influence": 3,
+      "cost": {
+        "credits": 2,
+        "minerals": 0,
+        "energy": 0,
+        "data": 3,
+        "fleetPower": 0
+      },
+      "text": "교란: 보스전 중 1회, 후보 2장 압축을 적용한 뒤 그 분쟁에서 내 상성 패배를 무승부로 변경.",
+      "effects": [
+        {
+          "keyword": "교란",
+          "trigger": "boss_dispute_before_submission",
+          "uses": 1,
+          "compressOpponentCandidatesTo": 2,
+          "thenResultOverride": {
+            "condition": {
+              "lossReason": "type_advantage"
+            },
+            "resultOverride": "draw"
+          }
+        }
+      ],
+      "tags": [
+        "조직/네트워크"
+      ],
+      "pools": [
+        "act1",
+        "risk"
+      ]
+    },
+    {
+      "id": "ESP-A8",
+      "name": "제국 회계사",
+      "set": "act1_market",
+      "description": "제국식 회계 장부로 인수 대상의 부채와 권리를 재분류하는 전문가. 상업/첩보 보스 카드 인수 비용을 낮춘다.",
+      "type": "첩보",
+      "role": "인수",
+      "influence": 2,
+      "cost": {
+        "credits": 2,
+        "minerals": 0,
+        "energy": 0,
+        "data": 2,
+        "fleetPower": 0
+      },
+      "text": "인수: 상업 또는 첩보 보스 카드 인수 비용 C-1.",
+      "effects": [
+        {
+          "keyword": "인수",
+          "trigger": "boss_acquisition_purchase",
+          "scope": {
+            "types": [
+              "상업",
+              "첩보"
+            ]
+          },
+          "discount": {
+            "credits": 1
+          }
+        }
+      ],
+      "tags": [
+        "인물"
+      ],
+      "pools": [
+        "act1",
+        "general",
+        "risk"
+      ]
+    },
+    {
+      "id": "ATLAS-001",
+      "name": "보급 호위대",
+      "set": "atlas_base",
+      "description": "아틀라스 보급선을 지키는 기초 호위대. 작지만 보스전 군사 축을 만든다.",
+      "type": "군사",
+      "role": "고영향력 바닐라",
+      "influence": 1,
+      "cost": {
+        "credits": 1,
+        "minerals": 0,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 1
+      },
+      "text": "효과 없음.",
+      "effects": [],
+      "tags": [
+        "함선/부대"
+      ],
+      "pools": [
+        "atlas_base",
+        "boss_act1"
+      ]
+    },
+    {
+      "id": "ATLAS-002",
+      "name": "소형 교역선단",
+      "set": "atlas_base",
+      "description": "아틀라스의 소형 상업 선단. 매출 기반을 넓히는 기본 상업 카드다.",
+      "type": "상업",
+      "role": "생산",
+      "influence": 1,
+      "cost": {
+        "credits": 1,
+        "minerals": 0,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 C+1.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": false,
+          "gain": {
+            "credits": 1
+          }
+        }
+      ],
+      "tags": [
+        "함선/부대"
+      ],
+      "pools": [
+        "atlas_base",
+        "boss_act1"
+      ]
+    },
+    {
+      "id": "ATLAS-003",
+      "name": "변방 정찰망",
+      "set": "atlas_base",
+      "description": "아틀라스가 변방에 깔아둔 정찰망. 데이터 생산으로 보스 카드 풀의 첩보 축을 만든다.",
+      "type": "첩보",
+      "role": "생산",
+      "influence": 1,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 0,
+        "data": 1,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 D+1.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": false,
+          "gain": {
+            "data": 1
+          }
+        }
+      ],
+      "tags": [
+        "조직/네트워크"
+      ],
+      "pools": [
+        "atlas_base",
+        "boss_act1"
+      ]
+    },
+    {
+      "id": "ATLAS-004",
+      "name": "광물 선물계약",
+      "set": "atlas_base",
+      "description": "미래 광물 인도분을 선점한 계약. 아틀라스의 상업 영향력을 두껍게 만든다.",
+      "type": "상업",
+      "role": "생산",
+      "influence": 2,
+      "cost": {
+        "credits": 2,
+        "minerals": 0,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 0
+      },
+      "text": "생산: 노드 진입 시 M+1.",
+      "effects": [
+        {
+          "keyword": "생산",
+          "trigger": "node_entry",
+          "optional": false,
+          "gain": {
+            "minerals": 1
+          }
+        }
+      ],
+      "tags": [
+        "계약/권리"
+      ],
+      "pools": [
+        "atlas_base",
+        "boss_act1"
+      ]
+    },
+    {
+      "id": "ATLAS-005",
+      "name": "환전소 네트워크",
+      "set": "atlas_base",
+      "description": "현지 환전상과 계좌 장부를 데이터로 묶은 네트워크. 일반 성계 조달 때 보유 자원 1개를 필요한 다른 자원으로 돌린다.",
+      "type": "첩보",
+      "role": "조달",
+      "influence": 2,
+      "cost": {
+        "credits": 2,
+        "minerals": 0,
+        "energy": 0,
+        "data": 1,
+        "fleetPower": 0
+      },
+      "text": "조달: 일반 성계에서 조달 또는 우대거래를 선택하면 보유 자원 1개를 원하는 다른 자원 1개로 교환할 수 있다.",
+      "effects": [
+        {
+          "keyword": "조달",
+          "trigger": "normal_system_resource_action",
+          "appliesToActions": [
+            "procure",
+            "preferred_trade"
+          ],
+          "exchange": {
+            "payAnyResource": 1,
+            "gainAnyDifferentResource": 1
+          }
+        }
+      ],
+      "tags": [
+        "조직/네트워크"
+      ],
+      "pools": [
+        "atlas_base",
+        "boss_act1"
+      ]
+    },
+    {
+      "id": "ATLAS-006",
+      "name": "차터 단속함대",
+      "set": "atlas_base",
+      "description": "차터 위반을 단속한다는 명목의 무장 함대. 중형 군사 압박으로 보스전을 받친다.",
+      "type": "군사",
+      "role": "고영향력 바닐라",
+      "influence": 2,
+      "cost": {
+        "credits": 1,
+        "minerals": 0,
+        "energy": 0,
+        "data": 0,
+        "fleetPower": 2
+      },
+      "text": "효과 없음.",
+      "effects": [],
+      "tags": [
+        "함선/부대"
+      ],
+      "pools": [
+        "atlas_base",
+        "boss_act1"
+      ]
+    },
+    {
+      "id": "RELIC-001",
+      "name": "고대 전술 관문",
+      "set": "proxy_relic",
+      "description": "사라진 전쟁 문명이 남긴 전술 관문. 보스전의 군사 상성 패배를 한 번 비틀 수 있다.",
+      "type": "군사",
+      "role": "교란",
+      "influence": 3,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 1,
+        "data": 2,
+        "fleetPower": 0
+      },
+      "text": "교란: 보스전 중 1회, 다른 내 군사 카드의 상성 패배를 무승부로 변경.",
+      "effects": [
+        {
+          "keyword": "교란",
+          "trigger": "boss_dispute_result",
+          "uses": 1,
+          "condition": {
+            "ownSubmittedCardType": "군사",
+            "excludeSelf": true,
+            "lossReason": "type_advantage"
+          },
+          "resultOverride": "draw"
+        }
+      ],
+      "tags": [
+        "유물"
+      ],
+      "pools": [
+        "proxy_relic",
+        "relic"
+      ]
+    },
+    {
+      "id": "RELIC-002",
+      "name": "잊힌 무역 좌표",
+      "set": "proxy_relic",
+      "description": "지도에서 지워진 고대 교역 좌표. 상업 판권의 정당성을 높여 분쟁 영향력을 보강한다.",
+      "type": "상업",
+      "role": "교란",
+      "influence": 2,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 1,
+        "data": 2,
+        "fleetPower": 0
+      },
+      "text": "교란: 판권 분쟁에서 내 상업 카드 영향력 +1.",
+      "effects": [
+        {
+          "keyword": "교란",
+          "trigger": "dispute_influence",
+          "scope": {
+            "type": "상업"
+          },
+          "modifyComparison": 1
+        }
+      ],
+      "tags": [
+        "유물"
+      ],
+      "pools": [
+        "proxy_relic",
+        "relic"
+      ]
+    },
+    {
+      "id": "RELIC-003",
+      "name": "예언 데이터 코어",
+      "set": "proxy_relic",
+      "description": "가능한 교전 후보를 예측하는 낡은 데이터 코어. 보스전 상대 후보를 압축한다.",
+      "type": "첩보",
+      "role": "정보",
+      "influence": 3,
+      "cost": {
+        "credits": 0,
+        "minerals": 0,
+        "energy": 1,
+        "data": 2,
+        "fleetPower": 0
+      },
+      "text": "정보: 보스전 판권 분쟁 1회, 후보 2장 압축.",
+      "effects": [
+        {
+          "keyword": "정보",
+          "trigger": "boss_dispute_before_submission",
+          "uses": 1,
+          "compressOpponentCandidatesTo": 2
+        }
+      ],
+      "tags": [
+        "유물"
+      ],
+      "pools": [
+        "proxy_relic",
+        "relic"
+      ]
+    }
+  ]
+}
